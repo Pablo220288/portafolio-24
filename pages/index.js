@@ -1,5 +1,4 @@
-import Pablo from "@/components/pablo";
-
+import Pablo from "@/components/Pablo";
 
 export default function Home() {
   return (
