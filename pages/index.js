@@ -1,3 +1,4 @@
+import About from "@/components/About";
 import Pablo from "@/components/Pablo";
 
 export default function Home() {
@@ -9,7 +10,7 @@ export default function Home() {
             className="bg-video"
             data-autoplay=""
             loop="loop"
-            muted="muted"
+            muted
             autoPlay="autoplay"
             preload="auto"
             src="https://landing4.wpengine.com/wp-content/uploads/2022/04/final-landing-1.mp4"
@@ -17,7 +18,8 @@ export default function Home() {
           ></video>
         </div>
       </div>
-      <Pablo />
+      <Pablo /> 
+      <About />
     </>
   );
 }
