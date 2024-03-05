@@ -1,5 +1,6 @@
-import About from "@/components/About";
+import Title from "@/components/Title";
 import Pablo from "@/components/Pablo";
+import About from "@/components/About";
 
 export default function Home() {
   return (
@@ -18,7 +19,8 @@ export default function Home() {
           ></video>
         </div>
       </div>
-      <Pablo /> 
+      <Pablo />
+      <Title />
       <About />
     </>
   );

@@ -177,3 +177,30 @@ body {
   display: flex;
   -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(0, 0, 0, 0.1333333333));
 }
+
+:root {
+  --headlineBig: clamp(3rem, 10vw, 15rem);
+  --headlineSmall: clamp(1rem, 1.2vw, 6rem);
+}
+
+.reveal {
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.reveal-text {
+  width: fit-content;
+  font-weight: 800;
+  font-size: var(--headlineBig);
+  line-height: var(--headlineBig);
+  color: transparent;
+  filter: drop-shadow(0 0 0.06rem rgb(2, 2, 2));
+}
+
+.spacing-small {
+  height: 50vh;
+}
+
+.spacing {
+  height: 100vh;
+}
