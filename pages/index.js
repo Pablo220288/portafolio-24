@@ -1,11 +1,28 @@
+import { useEffect, useState } from "react";
 import Title from "@/components/Title";
 import Pablo from "@/components/Pablo";
 import About from "@/components/About";
 import Welcome from "@/components/Welcome";
+import Loader from "@/components/Loader";
 
 export default function Home() {
+  const [loaderHide, setLoaderHide] = useState(false);
+
+  const loaded = () => {
+    if (typeof window !== "undefined") {
+      setTimeout(() => {
+        setLoaderHide(true);
+      }, "1000");
+    }
+  };
+
+  useEffect(() => {
+    loaded();
+  }, []);
+
   return (
     <div className="body-content">
+      <Loader hide={loaderHide} />
       <div className="background-wrapper">
         <div className="background-wrapper-video">
           <video
@@ -22,8 +39,6 @@ export default function Home() {
       </div>
       <Welcome />
       <Pablo />
-      {/* <Title /> */}
-      {/* <About /> */}
     </div>
   );
 }

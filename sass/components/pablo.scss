@@ -1,3 +1,7 @@
+:root {
+  --delayAnimation: 7s;
+}
+
 .home-name {
   display: flex;
   flex-direction: column;
@@ -28,53 +32,60 @@
     .capa-p {
       stroke-dasharray: 800;
       stroke-dashoffset: 800;
-      animation: effect-letter 0.5s 6s linear forwards;
+      animation: effect-letter 0.5s var(--delayAnimation) linear forwards;
     }
     .capa-ab {
       stroke-dasharray: 255;
       stroke-dashoffset: 255;
-      animation: effect-letter 0.4s 6.5s linear forwards;
+      animation: effect-letter 0.4s 7.5s linear forwards;
     }
     .capa-l {
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
-      animation: effect-letter 0.2s 6.9s linear forwards;
+      animation: effect-letter 0.2s 7.9s linear forwards;
     }
     .capa-o {
       stroke-dasharray: 65;
       stroke-dashoffset: 65;
-      animation: effect-letter 0.2s 7.15s linear forwards;
+      animation: effect-letter 0.2s 8.15s linear forwards;
     }
     .capa-h {
       stroke-dasharray: 750;
       stroke-dashoffset: 750;
-      animation: effect-letter 0.5s 7.35s linear forwards;
+      animation: effect-letter 0.5s 8.35s linear forwards;
     }
     .capa-e {
       stroke-dasharray: 140;
       stroke-dashoffset: 140;
-      animation: effect-letter 0.3s 7.85s linear forwards;
+      animation: effect-letter 0.3s 8.85s linear forwards;
     }
     .capa-n {
       stroke-dasharray: 50;
       stroke-dashoffset: 50;
-      animation: effect-letter 0.2s 8.15s linear forwards;
+      animation: effect-letter 0.2s 9.15s linear forwards;
     }
     .capa-an {
       stroke-dasharray: 100;
       stroke-dashoffset: 100;
-      animation: effect-letter 0.3s 8.35s linear forwards;
+      animation: effect-letter 0.3s 9.35s linear forwards;
     }
     .capa-de {
       stroke-dasharray: 195;
       stroke-dashoffset: 195;
-      animation: effect-letter 0.3s 8.65s linear forwards;
+      animation: effect-letter 0.3s 9.65s linear forwards;
     }
     .capa-z {
       stroke-dasharray: 120;
       stroke-dashoffset: 120;
-      animation: effect-letter 0.2s 8.95s linear forwards;
+      animation: effect-letter 0.2s 9.95s linear forwards;
     }
+  }
+  .subtitle {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 80px;
   }
 }
 @keyframes effect-letter {

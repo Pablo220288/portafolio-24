@@ -1,6 +1,42 @@
-import React from "react";
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
+import gsap from "gsap";
+import React, { useRef } from "react";
 
 export default function Pablo() {
+  const comp = useRef(null);
+
+  useIsomorphicLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      const t1 = gsap.timeline();
+      t1.from(
+        [
+          "#letter-subtitle-1",
+          "#letter-subtitle-2",
+          "#letter-subtitle-3",
+          "#letter-subtitle-4",
+          "#letter-subtitle-5",
+          "#letter-subtitle-6",
+          "#letter-subtitle-7",
+          "#letter-subtitle-8",
+          "#letter-subtitle-9",
+          "#letter-subtitle-10",
+          "#letter-subtitle-11",
+          "#letter-subtitle-12",
+          "#letter-subtitle-13",
+        ],
+        {
+          opacity: 0,
+          y: -260,
+          duration: 0.5,
+          delay: 9,
+          stagger: {
+            amount: 1,
+          },
+        }
+      );
+    }, comp);
+    return () => ctx.revert();
+  });
   return (
     <div className="home-name">
       <svg
@@ -239,6 +275,21 @@ export default function Pablo() {
           />
         </g>
       </svg>
+      <div className="subtitle" ref={comp}>
+        <spam id="letter-subtitle-1">W</spam>
+        <spam id="letter-subtitle-2">e</spam>
+        <spam id="letter-subtitle-3">b</spam>
+        <spam id="letter-subtitle-4">{"\xA0"}</spam>
+        <spam id="letter-subtitle-5">D</spam>
+        <spam id="letter-subtitle-6">e</spam>
+        <spam id="letter-subtitle-7">v</spam>
+        <spam id="letter-subtitle-8">e</spam>
+        <spam id="letter-subtitle-9">l</spam>
+        <spam id="letter-subtitle-10">o</spam>
+        <spam id="letter-subtitle-11">p</spam>
+        <spam id="letter-subtitle-12">e</spam>
+        <spam id="letter-subtitle-13">r</spam>
+      </div>
     </div>
   );
 }

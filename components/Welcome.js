@@ -1,17 +1,18 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 import gsap from "gsap";
 
 export default function Welcome() {
   const comp = useRef(null);
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     let ctx = gsap.context(() => {
       const t1 = gsap.timeline();
       t1.from("#letter-1", {
         opacity: 0,
-        x: 160,
+        x: 260,
         duration: 0.4,
-        delay: 1,
+        delay: 2,
       });
       t1.from(
         "#letter-2",
@@ -48,7 +49,7 @@ export default function Welcome() {
           rotateZ: 360,
           duration: 0.8,
         },
-        2.5
+        3.5
       );
       t1.to(
         ["#letter-3"],
@@ -56,7 +57,7 @@ export default function Welcome() {
           x: -19,
           duration: 0.3,
         },
-        2.5
+        3.5
       );
       t1.to(
         ["#letter-2"],
@@ -64,7 +65,7 @@ export default function Welcome() {
           x: 38,
           duration: 0.3,
         },
-        2.5
+        3.5
       );
       t1.from(
         ["#letter-6"],
@@ -74,7 +75,7 @@ export default function Welcome() {
           transformOrigin: "right top",
           duration: 0.6,
         },
-        1.8
+        2.8
       );
       t1.from(["#letter-8"], {
         opacity: 0,
