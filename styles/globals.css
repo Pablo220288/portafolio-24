@@ -203,9 +203,14 @@ body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 80px;
+  bottom: 180px;
 }
 
+@media screen and (min-width: 700px) {
+  .home-name .subtitle {
+    bottom: 80px;
+  }
+}
 @keyframes effect-letter {
   to {
     stroke-dashoffset: 0;
