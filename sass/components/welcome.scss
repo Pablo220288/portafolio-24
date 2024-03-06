@@ -1,0 +1,11 @@
+.welcome-content {
+  width: 100%;
+  height: 100vh;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  .welcome-letter {
+    font-size: 4rem;
+  }
+}

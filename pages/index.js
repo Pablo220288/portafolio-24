@@ -1,10 +1,11 @@
 import Title from "@/components/Title";
 import Pablo from "@/components/Pablo";
 import About from "@/components/About";
+import Welcome from "@/components/Welcome";
 
 export default function Home() {
   return (
-    <>
+    <div className="body-content">
       <div className="background-wrapper">
         <div className="background-wrapper-video">
           <video
@@ -19,9 +20,10 @@ export default function Home() {
           ></video>
         </div>
       </div>
+      <Welcome />
       <Pablo />
-      <Title />
-      <About />
-    </>
+      {/* <Title /> */}
+      {/* <About /> */}
+    </div>
   );
 }
