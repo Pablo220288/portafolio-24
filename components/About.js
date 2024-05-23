@@ -1,10 +1,13 @@
 import React, { useEffect, useRef } from "react";
+import useIsomorphicLayoutEffect from "@/hooks/useIsomorphicLayoutEffect";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 export default function About() {
-  const [lettersRef, setlettersRef] = useArrayRef();
+  const [lettersRef, setLettersRef] = useArrayRef();
+  const sectionRef = useRef(null);
   const triggerRef = useRef(null);
+  const comp = useRef(null);
 
   function useArrayRef() {
     const lettersRef = useRef([]);
@@ -13,38 +16,133 @@ export default function About() {
   }
 
   gsap.registerPlugin(ScrollTrigger);
-  const text =
-    "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut.";
-
-  useEffect(() => {
-    const anim = gsap.to(lettersRef.current, {
-      scrollTrigger: {
-        trigger: triggerRef.current,
-        scrub: true,
-        start: "top center",
-        end: "bottom 85%",
+  /* 
+  useIsomorphicLayoutEffect(() => {
+    const pin = gsap.fromTo(
+      sectionRef.current,
+      {
+        translateX: 0,
       },
-      color: "#ffffff",
-      duration: 5,
-      stagger: 1,
-    });
+      {
+        translateX: "-100vw",
+        ease: "none",
+        duration: 1,
+        scrollTrigger: {
+          trigger: triggerRef.current,
+          start: "top top",
+          end: "2000 top",
+          scrub: 0.6,
+          pin: true,
+        },
+      }
+    );
     return () => {
-      anim;
+      pin.revert();
     };
-  }, [lettersRef]);
+  }, []); */
+
+  useIsomorphicLayoutEffect(() => {
+    let tl = gsap.timeline({
+      defaults: {
+        ease: "none",
+      },
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        pin: true,
+        scrub: 2,
+        end: () => "+=" + sectionRef.current.offsetWidth / 2,
+      },
+    });
+    tl.to(sectionRef.current, {
+      translateX: "-200vw",
+    });
+    tl.fromTo(
+      "#letter-about-0",
+      { opacity: 0, yPercent: -50 },
+      {
+        opacity: 1,
+        yPercent: 0,
+        ease: "elastic.out(2,1)",
+        scrollTrigger: {
+          trigger: "#letter-about-0",
+          start: "left 70%",
+          end: "center 40%",
+          containerAnimation: tl,
+          scrub: true,
+        },
+      }
+    );
+    tl.fromTo(
+      "#letter-about-1",
+      { opacity: 0, yPercent: 50 },
+      {
+        opacity: 1,
+        yPercent: 0,
+        duration: 0.8,
+        ease: "elastic.out(1,1)",
+        scrollTrigger: {
+          trigger: "#letter-about-1",
+          start: "left 70%",
+          end: "center 40%",
+          containerAnimation: tl,
+          scrub: true,
+        },
+      }
+    );
+    tl.fromTo(
+      "#letter-about-2",
+      { opacity: 0, yPercent: -50 },
+      {
+        opacity: 1,
+        yPercent: 0,
+        ease: "elastic.out(1,1)",
+        scrollTrigger: {
+          trigger: "#letter-about-2",
+          start: "left 70%",
+          end: "center 40%",
+          containerAnimation: tl,
+          scrub: true,
+        },
+      }
+    );
+    tl.fromTo(
+      "#letter-about-4",
+      { opacity: 0, yPercent: 50 },
+      {
+        opacity: 1,
+        yPercent: 0,
+        duration: 0.8,
+        ease: "elastic.out(1,1)",
+        scrollTrigger: {
+          trigger: "#letter-about-4",
+          start: "left 70%",
+          end: "center 40%",
+          containerAnimation: tl,
+          scrub: true,
+        },
+      }
+    );
+
+    return () => {
+      tl.revert();
+    };
+  }, []);
+
+  const textAbout = "Web Developer";
 
   return (
-    <>
-      <div className="reveal">
-        <div ref={triggerRef}>
-          {text.split("").map((letter, index) => (
-            <span className="reveal-text" key={index} ref={setlettersRef}>
-              {letter}
-            </span>
-          ))}
+    <section className="about-section-content">
+      <div ref={triggerRef}>
+        <div className="about-section-inner" ref={sectionRef}>
+          <div className="about-section about-hader">
+            {textAbout.split("").map((letter, index) => (
+              <span className="letter-split" key={index} id={`letter-about-${index}`}>
+                {letter === " " ? "\xA0" : letter}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="spacing"></div>
-    </>
+    </section>
   );
 }
